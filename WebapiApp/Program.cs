@@ -9,10 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddTransient<DbContext, AppDbContext>();
 builder.Services.AddTransient<IProductService, ProductService>();
-builder.Services.AddDbContext<AppDbContext>(options =>
-options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
-);
 
+builder.Services.AddDbContext<AppDbContext>(options =>
+options.UseInMemoryDatabase(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 // Add services to the container.

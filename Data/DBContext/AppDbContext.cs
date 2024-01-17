@@ -10,9 +10,9 @@ namespace Data.DBContext
 
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            optionsBuilder.UseInMemoryDatabase("BooksDatabase");
         }
 
         public DbSet<Product> products { get; set; }

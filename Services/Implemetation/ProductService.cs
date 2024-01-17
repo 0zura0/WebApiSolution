@@ -9,6 +9,7 @@ namespace Services.Implemetation
     public class ProductService : IProductService
     {
         private readonly AppDbContext _contextDb;
+
         public ProductService(AppDbContext context)
         {
             _contextDb = context;
@@ -16,8 +17,8 @@ namespace Services.Implemetation
 
         public async Task<Product> AddOneProduct(Product product)
         {
-            await this._contextDb.AddAsync(product);
-            await this._contextDb.SaveChangesAsync();
+            await _contextDb.AddAsync(product);
+            await _contextDb.SaveChangesAsync();
             return product;
         }
 
